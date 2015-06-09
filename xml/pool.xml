@@ -1,0 +1,21 @@
+<!-- use this as a template to create the storage pool.
+
+virsh pool-define ./xml/pool.xml
+libvirt will create the pool and initialize the uuid,
+capacity, allocation, and available elements.
+
+If the path element does not point to a real path,
+the comand will fail
+-->
+
+<pool type='dir'>
+  <name>trucker</name>
+  <target>
+    <path>/var/lib/libvirt/trucker/images</path>
+    <permissions>
+      <mode>0755</mode>
+      <owner>-1</owner>
+      <group>-1</group>
+    </permissions>
+  </target>
+</pool>
