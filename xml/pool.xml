@@ -5,6 +5,7 @@ libvirt will create the pool and initialize the uuid,
 capacity, allocation, and available elements.
 
 If the path element does not point to a real path,
+or, the process does not have sufficient privileges,
 the comand will fail
 -->
 
