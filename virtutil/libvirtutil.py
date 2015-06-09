@@ -1,7 +1,5 @@
 #!/bin/python
 
-#import sys, libvirt
-
 
 import sys, libvirt 
 def connect(uri):
