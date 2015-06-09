@@ -14,3 +14,4 @@ def test_connect():
         print uri
         conn = libvirtutil.connect(uri)
         assert conn > 0
+        conn.close()
