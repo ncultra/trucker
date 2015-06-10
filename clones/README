@@ -1,0 +1,8 @@
+Place source images for cloning in this directory. Trucker will then
+clone the image to create a new VM instance.
+
+"clones" is a misnomer because the images are backing files for
+potential clones; not clones per se.
+
+Trucker will append ".seed" to the filename of each image in this
+directory. tty_small.qcow2 will become tty_small.qcow2.seed.
