@@ -11,6 +11,7 @@ the comand will fail
 
 <pool type='dir'>
   <name>trucker</name>
+  <uuid> </uuid>
   <target>
     <path>/var/lib/libvirt/trucker/images</path>
     <permissions>

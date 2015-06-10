@@ -1,0 +1,26 @@
+<volume type='file'>
+  <name>tty_small</name>
+  <key>/var/lib/libvirt/trucker/images/tty_small.qcow2</key>
+  <source>
+  </source>
+  <capacity unit='bytes'>2147483648</capacity>
+  <allocation unit='bytes'>152817664</allocation>
+  <target>
+    <path>/var/lib/libvirt/images/tty_small.qcow2</path>
+    <format type='qcow2'/>
+    <permissions>
+      <mode>0600</mode>
+      <owner>107</owner>
+      <group>107</group>
+    </permissions>
+    <timestamps>
+      <atime>1433781855.023159495</atime>
+      <mtime>1433951590.773829689</mtime>
+      <ctime>1433951590.773829689</ctime>
+    </timestamps>
+    <compat>1.1</compat>
+    <features>
+      <lazy_refcounts/>
+    </features>
+  </target>
+</volume>
