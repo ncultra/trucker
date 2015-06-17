@@ -1,12 +1,12 @@
 <volume type='file'>
   <name>tty_small</name>
-  <key>/var/lib/libvirt/trucker/images/tty_small.qcow2</key>
+  <key>/var/trucker/images/tty_small.qcow2</key>
   <source>
   </source>
   <capacity unit='bytes'>2147483648</capacity>
   <allocation unit='bytes'>152817664</allocation>
   <target>
-    <path>/var/lib/libvirt/trucker/images/tty_small.qcow2</path>
+    <path>/var/trucker/images/tty_small.qcow2</path>
     <format type='qcow2'/>
     <permissions>
       <mode>0600</mode>

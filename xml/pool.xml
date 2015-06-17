@@ -12,7 +12,7 @@ the comand will fail
 <pool type='dir'>
   <name>trucker</name>
   <target>
-    <path>/var/lib/libvirt/trucker/images</path>
+    <path>/var/trucker/images</path>
     <permissions>
       <mode>0755</mode>
       <owner>-1</owner>
