@@ -55,6 +55,7 @@ class pool:
 
     def get_volume(self, name):
         if self.libvirt_pool != None:
+            self.libvirt_pool.refresh()
             return self.libvirt_pool.storageVolLookupByName(name)
         else:
             raise (IOError, "underlying libvirt object is not allocated")
