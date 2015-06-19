@@ -18,15 +18,34 @@ class pool:
         except IOError, e:
             print e.errno
             print os.strerror(e.errno)
+    def __pool_exists__(self):
+        names = conn.listStoragePools()
+        for n in names:
+            if n == self.name:
+                return True
+        return False
 
-# TODO: should this return the actual libvirt pool object?
-    def create(self):
+    def __create__(self):
         if self.libvirt_pool != None:
             raise (IOError, 'libvirt storage pool already exists!')
         self.libvirt_pool = conn.storagePoolCreateXML(self.config)
+# hack to ensure the name is consistent with self and libvirt
+        self.name = self.libvirt_pool.name()
         return self.libvirt_pool
+
+# conn.listAllStoragePools
+    def open(self):
+        if self.__pool_exists__():
+            for p in conn.listAllStoragePools():
+                if self.name == p.name():
+                    self.libvirt_pool = p
+        else:
+            self.libvirt_pool = self.__create__()
+
+        return self.libvirt_pool
+    
 # is IOError the right exception ?
-    def close(self):
+    def delete(self):
         cc = None
         if self.libvirt_pool != None:
             cc = self.libvirt_pool.destroy()
@@ -75,11 +94,10 @@ if __name__ == "__main__":
 
     conn = libvirt.open(uri)
     pool = pool(conn, 'tpool', f)
-    print(pool)
+    print pool
 
-    virt_pool = pool.create()
-    print virt_pool
-    names =  pool.list()
-    print names[0]
-    print pool.get_volume(names[0])
-    pool.close()
+    virt_pool = pool.open()
+    print  pool.list()
+    print pool.libvirt_pool.name()
+    print pool.name
+    pool.delete()
