@@ -29,11 +29,10 @@ class pool:
         if self.libvirt_pool != None:
             raise (IOError, 'libvirt storage pool already exists!')
         self.libvirt_pool = conn.storagePoolCreateXML(self.config)
-# hack to ensure the name is consistent with self and libvirt
+        # TODO: hack to ensure the name is consistent with self and libvirt
         self.name = self.libvirt_pool.name()
         return self.libvirt_pool
 
-# conn.listAllStoragePools
     def open(self):
         if self.__pool_exists__():
             for p in conn.listAllStoragePools():
@@ -44,7 +43,7 @@ class pool:
 
         return self.libvirt_pool
     
-# is IOError the right exception ?
+    # TODO: is IOError the right exception here ?
     def delete(self):
         cc = None
         if self.libvirt_pool != None:
@@ -54,25 +53,31 @@ class pool:
             raise (IOError, 'failed to close libvirt storage pool.')
         return cc
 
-# returns a list of volume names
     def list(self):
+        """
+        Returns a list of volume names.
+        """
         if self.libvirt_pool != None:
             self.libvirt_pool.refresh()
             return self.libvirt_pool.listVolumes()
         else:
             raise (IOError, "underlying libvirt object is not allocated")
 
-# returns a list of volume objects
     def volumes(self):
+        """ 
+        Returns a list of volume objects.
+        """
         if self.libvirt_pool != None:
             self.libvirt_pool.refresh()
             return self.libvirt_pool.listAllVolumes()
         else:
             raise (IOError, "underlying libvirt object is not allocated")
 
-# return one volume object if it exists
 
     def get_volume(self, name):
+        """
+         Return one volume object if it exists.
+        """
         if self.libvirt_pool != None:
             self.libvirt_pool.refresh()
             return self.libvirt_pool.storageVolLookupByName(name)
